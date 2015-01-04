@@ -1,1 +1,1 @@
-web: casperjs game.js
+web: ./bin/www
