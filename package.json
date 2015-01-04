@@ -1,0 +1,23 @@
+{
+    "name": "enbot_casper",
+    "version": "0.1.0",
+    "description": "casper part of enbot",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/feugenix/enbot_casper.git"
+    },
+    "engines": {
+        "node": "0.10"
+    },
+    "dependencies": {
+        "casperjs": "1.1.0-beta3"
+    },
+    "devDependencies": {
+        "jscs": "~1.5.9",
+        "jshint": "~2.1.4"
+    },
+    "scripts": {
+        "start": "node ./bin/www"
+    }
+}
