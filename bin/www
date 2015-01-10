@@ -1,13 +1,31 @@
 #!/usr/bin/env casperjs
 
-// var casper = require("casper").create();
-// casper.exit();
+var casperModule = require('casper'),
+    casper = casperModule.create(),
+    utils = require('utils');
 
 var system = require('system'),
     webserver = require('webserver').create();
 
 webserver.listen(system.env.PORT || 5000, function(request, response) {
-    response.statusCode = 200;
-    response.write('<html><body>Hello!</body></html>');
-    response.close();
+
+    switch (request.url) {
+        case '/test':
+            utils.dump('test');
+
+            casper.start('http://casperjs.org/', function() {
+                utils.dump('start');
+                response.statusCode = 200;
+                response.write(this.getTitle());
+                response.close();
+            });
+
+            casper.run();
+        break;
+
+        default:
+            response.statusCode = 200;
+            response.write('nothing');
+            response.close();
+    }
 });
